@@ -4,7 +4,8 @@ public class Livro {
     private String isbn;
     private int id = 1;
 
-    public Livro(String titulo, String autor, String isbn) {
+    public Livro(int id, String titulo, String autor, String isbn) {
+        this.id = id;
         this.titulo = titulo;
         this.autor = autor;
         this.isbn = isbn;
@@ -22,6 +23,10 @@ public class Livro {
         return isbn;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
@@ -34,17 +39,13 @@ public class Livro {
         this.isbn = isbn;
     }
 
-    public void adicionarLivro(Livro livro){
 
-        Biblioteca biblioteca = new Biblioteca();
-        biblioteca.livros.add(livro);
-    }
 
     @Override
     public String toString() {
-        return "Livro " + id++ +
-                " - titulo: " + titulo +
-                ", autor: " + autor +
-                ", isbn: " + isbn;
+        return "Livro " + id +":" +
+                " titulo: " + titulo +
+                " | autor: " + autor +
+                " | isbn: " + isbn;
     }
 }

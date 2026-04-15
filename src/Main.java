@@ -39,12 +39,18 @@ void main() {
                 break;
 
             case 3:
+                System.out.println("Digite o nome do autor do livro: ");
+                String nomeAutor = sc.nextLine();
 
+                biblioteca.procurarPorAutor(nomeAutor);
                 break;
 
             case 4:
-
+                System.out.println("Obrigado por utilizar nosso sistema! ");
                 break;
+
+            default:
+                System.out.println("Opção inválida. \n");
         }
 
 

@@ -9,7 +9,7 @@ public class Biblioteca {
         livros.add(livro);
     }
 
-    void listarLivros(){
+   public void listarLivros(){
         if(livros.isEmpty()){
             System.out.println("Nenhum livro encontrado \n");
         } else {
@@ -18,7 +18,7 @@ public class Biblioteca {
             }
         }
     }
-    void procurarPorAutor(String autorBusca){
+    public void procurarPorAutor(String autorBusca){
         boolean encontrado = false;
 
         for(Livro livro : livros){

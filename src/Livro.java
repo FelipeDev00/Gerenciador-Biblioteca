@@ -23,10 +23,6 @@ public class Livro {
         return isbn;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }

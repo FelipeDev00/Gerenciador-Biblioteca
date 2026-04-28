@@ -20,17 +20,15 @@ void main() {
                 System.out.println("Digite o ISBN do livro: ");
                 String isbn = sc.nextLine();
 
-                Livro livro = new Livro(id, nome, autor, isbn);
-                livro.setTitulo(nome);
-                livro.setAutor(autor);
-                livro.setIsbn(isbn);
+                if (nome.isBlank() || autor.isBlank() || isbn.isBlank()) {
+                    System.out.println("ERRO: Todos os campos são obrigatórios. O livro não foi adicionado.");
+                } else {
+                    Livro novoLivro = new Livro(id, nome, autor, isbn);
 
-                Livro novoLivro = new Livro(id, nome, autor, isbn);
-
-                biblioteca.adicionarLivro(novoLivro);
-                System.out.println("Livro adicionado com sucesso! \n");
-                id++;
-                livro.setId(id);
+                    biblioteca.adicionarLivro(novoLivro);
+                    System.out.println("Livro adicionado com sucesso!");
+                    id++;
+                }
                 break;
 
 

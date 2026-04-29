@@ -54,17 +54,6 @@ void main() {
 
     } while (opcao != 4 );
 
-
-
-
-
-
-
-
-
-
-
-
     }
 
 

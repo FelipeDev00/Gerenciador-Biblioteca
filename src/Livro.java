@@ -1,19 +1,14 @@
-public class Livro {
-    private String titulo;
+public class Livro extends ItemBiblioteca{
     private String autor;
     private String isbn;
-    private int id = 1;
 
     public Livro(int id, String titulo, String autor, String isbn) {
-        this.id = id;
-        this.titulo = titulo;
+        super(id, titulo);
         this.autor = autor;
         this.isbn = isbn;
     }
 
-    public String getTitulo() {
-        return titulo;
-    }
+
 
     public String getAutor() {
         return autor;
@@ -35,7 +30,10 @@ public class Livro {
         this.isbn = isbn;
     }
 
-
+    @Override
+    public void exibirDetalhes() {
+        System.out.println("Livro [ID: " + id + " | Título: " + titulo + " | Autor: " + autor + "]");
+    }
 
     @Override
     public String toString() {

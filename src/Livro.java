@@ -38,8 +38,8 @@ public class Livro extends ItemBiblioteca{
     @Override
     public String toString() {
         return "Livro " + id +":" +
-                " titulo: " + titulo +
-                " | autor: " + autor +
+                " Titulo: " + titulo +
+                " | Autor: " + autor +
                 " | isbn: " + isbn;
     }
 }

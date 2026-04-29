@@ -10,4 +10,11 @@ public class Revista extends ItemBiblioteca {
     public void exibirDetalhes() {
         System.out.println("Revista [ID: " + id + " | Título: " + titulo + " | Edição: " + edicao + "]");
     }
+
+    @Override
+    public String toString() {
+        return "Revista " + id + ": " +
+                "titulo: " + titulo +
+                "| Edição: " + edicao;
+    }
 }

@@ -3,34 +3,23 @@ import java.util.List;
 
 public class Biblioteca {
 
-    private List<Livro> livros =  new ArrayList<>();
+    private List<ItemBiblioteca> itemBiblioteca =  new ArrayList<>();
 
-    public void adicionarLivro(Livro livro){
-        livros.add(livro);
+    public void adicionarItem(ItemBiblioteca item){
+        itemBiblioteca.add(item);
+        System.out.println("Item '" + item.getTitulo() + "' adicionado com sucesso!");
     }
 
-   public void listarLivros(){
-        if(livros.isEmpty()){
-            System.out.println("Nenhum livro encontrado \n");
+   public void listarItens(){
+        if(itemBiblioteca.isEmpty()){
+            System.out.println("Nenhum item encontrado \n");
         } else {
-            for(Livro livro : livros){
-                System.out.println(livro);
+            for(ItemBiblioteca item : itemBiblioteca){
+                System.out.println(item);
             }
         }
     }
-    public void procurarPorAutor(String autorBusca){
-        boolean encontrado = false;
 
-        for(Livro livro : livros){
-            if(livro.getAutor().equalsIgnoreCase(autorBusca)){
-                System.out.println(livro);
-                encontrado = true;
-                System.out.println("\n");
-            }
-        }
-        if(!encontrado){
-            System.out.println("Nenhum livro encontrado para este autor. \n");
-        }
-    }
+
 
 }

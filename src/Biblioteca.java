@@ -20,6 +20,24 @@ public class Biblioteca {
         }
     }
 
+    public void procurarPorAutor(String autorBusca){
+        boolean encontrado = false;
+
+        for(ItemBiblioteca item : itemBiblioteca){
+            if(item instanceof Livro livro){
+                if(livro.getAutor().equalsIgnoreCase(autorBusca)){
+                    livro.exibirDetalhes();
+                    System.out.println(livro);
+                    encontrado = true;
+                    System.out.println("\n");
+                }
+            }
+        }
+        if(!encontrado){
+            System.out.println("Nenhum livro encontrado para este autor. \n");
+        }
+    }
+
 
 
 }

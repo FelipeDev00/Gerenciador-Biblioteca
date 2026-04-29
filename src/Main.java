@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 void main() {
     int opcao;
-    int id = 0;
+    int id = 1;
     Scanner sc = new Scanner(System.in);
 
     Biblioteca biblioteca = new Biblioteca();
@@ -16,8 +16,6 @@ void main() {
                 System.out.println("Qual item você deseja adicionar? (Selecione apenas o número correspondente) \n 1 - Livro \n 2 - Revista");
                 String item = sc.nextLine();
                 if(item.equals("1")){
-                    id = 1;
-
                     System.out.println("Digite o nome do livro: ");
                     String nome = sc.nextLine();
                     System.out.println("Digite o autor do livro: ");
@@ -30,10 +28,10 @@ void main() {
                     } else {
                         Livro novoLivro = new Livro(id, nome, autor, isbn);
                         biblioteca.adicionarItem(novoLivro);
+                        id++;
                     }
 
                 } else if (item.equals("2")) {
-                    id = 2;
                     System.out.println("Digite o nome da Revista: ");
                     String nome = sc.nextLine();
                     System.out.println("Digite a edição da Revista: ");
@@ -44,6 +42,7 @@ void main() {
                     } else {
                         Revista novaRevista = new Revista(id, nome, edicao);
                         biblioteca.adicionarItem(novaRevista);
+                        id++;
                     }
                 }
                 break;
@@ -56,8 +55,7 @@ void main() {
             case 3:
                 System.out.println("Digite o nome do autor do livro: ");
                 String nomeAutor = sc.nextLine();
-
-
+                biblioteca.procurarPorAutor(nomeAutor);
                 break;
 
             case 4:

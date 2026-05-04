@@ -25,6 +25,15 @@ public class Biblioteca {
             }
         }
     }
+    public void listarAutores(){
+        if(autores.isEmpty()){
+            System.out.println("Nenhum autor encontrado \n");
+        }  else {
+            for(Autor autor : autores){
+                System.out.println(autor);
+            }
+        }
+    }
 
     public void procurarPorAutor(String autorBusca){
         boolean encontrado = false;

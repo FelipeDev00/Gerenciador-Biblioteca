@@ -8,7 +8,7 @@ void main() {
     Biblioteca biblioteca = new Biblioteca();
 
     do {
-        System.out.println(" 1 - Cadastrar autor \n 2 - Adicionar item \n 3 - Listar todos os itens \n 4 - Procurar livro por autor \n 5 - Sair");
+        System.out.println(" 1 - Cadastrar autor \n 2 - Adicionar item \n 3 - Listar todos os itens \n 4 - Listar autores cadastrados \n 5 - Procurar livro por autor \n 6 - Sair");
         opcao = sc.nextInt();
         sc.nextLine();
         switch (opcao){
@@ -24,8 +24,6 @@ void main() {
                     Autor novoAutor = new Autor(nome, nacionalidade);
                     biblioteca.adicionarAutor(novoAutor);
                 }
-
-
                 break;
             case 2:
                 System.out.println("Qual item você deseja adicionar? (Selecione apenas o número correspondente) \n 1 - Livro \n 2 - Revista");
@@ -68,12 +66,16 @@ void main() {
                 break;
 
             case 4:
+                biblioteca.listarAutores();
+                break;
+                
+            case 5:
                 System.out.println("Digite o nome do autor do livro: ");
                 String nomeAutor = sc.nextLine();
                 biblioteca.procurarPorAutor(nomeAutor);
                 break;
 
-            case 5:
+            case 6:
                 System.out.println("Obrigado por utilizar nosso sistema! ");
                 break;
 

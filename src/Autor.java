@@ -19,6 +19,6 @@ public class Autor {
     public String toString() {
         return "Autor - " +
                 "Nome: " + nome  +
-                "| Nacionalidade: " + nacionalidade;
+                " | Nacionalidade: " + nacionalidade;
     }
 }

@@ -18,6 +18,12 @@ void main() {
                 System.out.println("Digite a nacionalidade do autor do livro:");
                 String nacionalidade = sc.nextLine();
 
+                if (nome.isBlank() || nacionalidade.isBlank()){
+                    System.out.println("ERRO: Preencha todos os campos para adicionar o autor.");
+                } else {
+                    Autor novoAutor = new Autor(nome, nacionalidade);
+                    biblioteca.adicionarAutor(novoAutor);
+                }
 
 
                 break;

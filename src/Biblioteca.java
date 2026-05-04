@@ -34,13 +34,22 @@ public class Biblioteca {
             }
         }
     }
+    public Autor validarAutor(String nome){
+
+        for(Autor autor : autores) {
+            if (autor.getNome().equalsIgnoreCase(nome)) {
+                return autor;
+            }
+        }
+        return null;
+    }
 
     public void procurarPorAutor(String autorBusca){
         boolean encontrado = false;
 
         for(ItemBiblioteca item : itemBiblioteca){
             if(item instanceof Livro livro){
-                if(livro.getAutor().equalsIgnoreCase(autorBusca)){
+                if(autorBusca.equalsIgnoreCase(livro.getAutor().getNome())){
                     livro.exibirDetalhes();
                     System.out.println(livro);
                     encontrado = true;
@@ -52,6 +61,10 @@ public class Biblioteca {
             System.out.println("Nenhum livro encontrado para este autor. \n");
         }
     }
+
+
+
+
 
 
 

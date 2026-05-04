@@ -1,20 +1,20 @@
 public class Livro extends ItemBiblioteca{
-    private String autor;
+    private Autor autor;
     private String isbn;
 
-    public Livro(int id, String titulo, String autor, String isbn) {
+    public Livro(int id, String titulo, Autor autor, String isbn) {
         super(id, titulo);
         this.autor = autor;
         this.isbn = isbn;
     }
 
-    public String getAutor() {
+    public Autor getAutor() {
         return autor;
     }
 
     @Override
     public void exibirDetalhes() {
-        System.out.println("Livro - ID: " + id + " | Título: " + titulo + " | Autor: " + autor + "]");
+        System.out.println("Livro - ID: " + id + " | Título: " + titulo + " | Autor: " + autor.getNome() + "]");
     }
 
     @Override

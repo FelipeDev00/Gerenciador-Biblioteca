@@ -3,6 +3,7 @@ import java.util.Scanner;
 void main() {
     int opcao;
     int id = 1;
+
     Scanner sc = new Scanner(System.in);
 
     Biblioteca biblioteca = new Biblioteca();
@@ -14,17 +15,18 @@ void main() {
         switch (opcao){
             case 1:
                 System.out.println("Digite o nome do autor: ");
-                String nome = sc.nextLine();
+                String nomeAutor = sc.nextLine();
                 System.out.println("Digite a nacionalidade do autor do livro:");
                 String nacionalidade = sc.nextLine();
 
-                if (nome.isBlank() || nacionalidade.isBlank()){
+                if (nomeAutor.isBlank() || nacionalidade.isBlank()) {
                     System.out.println("ERRO: Preencha todos os campos para adicionar o autor.");
-                } else {
-                    Autor novoAutor = new Autor(nome, nacionalidade);
-                    biblioteca.adicionarAutor(novoAutor);
+                    break;
                 }
+                Autor novoAutor = new Autor(nomeAutor, nacionalidade);
+                biblioteca.adicionarAutor(novoAutor);
                 break;
+
             case 2:
                 System.out.println("Qual item você deseja adicionar? (Selecione apenas o número correspondente) \n 1 - Livro \n 2 - Revista");
                 String item = sc.nextLine();
@@ -32,16 +34,23 @@ void main() {
                     System.out.println("Digite o nome do livro: ");
                     String nomeLivro = sc.nextLine();
                     System.out.println("Digite o nome do autor do livro: ");
-                    String autor = sc.nextLine();
+                    String autorLivro = sc.nextLine();
                     System.out.println("Digite o ISBN do livro: ");
                     String isbn = sc.nextLine();
 
-                    if (nomeLivro.isBlank() || autor.isBlank() || isbn.isBlank()) {
+                    if (nomeLivro.isBlank() || autorLivro.isBlank() || isbn.isBlank()) {
                         System.out.println("ERRO: Todos os campos são obrigatórios. O livro não foi adicionado.");
-                    } else {
-                        Livro novoLivro = new Livro(id, nomeLivro, autor, isbn);
-                        biblioteca.adicionarItem(novoLivro);
-                        id++;
+                    }
+
+                    else {
+                        Autor validarAutor = biblioteca.validarAutor(autorLivro);
+                        if (validarAutor == null) {
+                            System.out.println("ERRO: O autor não existe ou não foi cadastrado. \n");
+                        } else {
+                            Livro novoLivro = new Livro(id, nomeLivro,validarAutor, isbn);
+                            biblioteca.adicionarItem(novoLivro);
+                            id++;
+                        }
                     }
 
                 } else if (item.equals("2")) {
@@ -60,7 +69,6 @@ void main() {
                 }
                 break;
 
-
             case 3:
                 biblioteca.listarItens();
                 break;
@@ -68,12 +76,14 @@ void main() {
             case 4:
                 biblioteca.listarAutores();
                 break;
-                
+
             case 5:
                 System.out.println("Digite o nome do autor do livro: ");
-                String nomeAutor = sc.nextLine();
-                biblioteca.procurarPorAutor(nomeAutor);
+                String autorLivro = sc.nextLine();
+                biblioteca.procurarPorAutor(autorLivro);
                 break;
+
+
 
             case 6:
                 System.out.println("Obrigado por utilizar nosso sistema! ");
@@ -84,7 +94,7 @@ void main() {
         }
 
 
-    } while (opcao != 4 );
+    } while (opcao != 6);
 
     }
 

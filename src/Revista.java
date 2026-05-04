@@ -15,6 +15,6 @@ public class Revista extends ItemBiblioteca {
     public String toString() {
         return "Revista " + id + " - " +
                 "titulo: " + titulo +
-                "| Edição: " + edicao;
+                " | Edição: " + edicao;
     }
 }

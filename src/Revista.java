@@ -8,12 +8,12 @@ public class Revista extends ItemBiblioteca {
 
     @Override
     public void exibirDetalhes() {
-        System.out.println("Revista [ID: " + id + " | Título: " + titulo + " | Edição: " + edicao + "]");
+        System.out.println("Revista - ID: " + id + " | Título: " + titulo + " | Edição: " + edicao + "]");
     }
 
     @Override
     public String toString() {
-        return "Revista " + id + ": " +
+        return "Revista " + id + " - " +
                 "titulo: " + titulo +
                 "| Edição: " + edicao;
     }

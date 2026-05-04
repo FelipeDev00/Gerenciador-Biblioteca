@@ -14,12 +14,12 @@ public class Livro extends ItemBiblioteca{
 
     @Override
     public void exibirDetalhes() {
-        System.out.println("Livro [ID: " + id + " | Título: " + titulo + " | Autor: " + autor + "]");
+        System.out.println("Livro - ID: " + id + " | Título: " + titulo + " | Autor: " + autor + "]");
     }
 
     @Override
     public String toString() {
-        return "Livro " + id +":" +
+        return "Livro " + id +" - " +
                 " Titulo: " + titulo +
                 " | Autor: " + autor +
                 " | isbn: " + isbn;

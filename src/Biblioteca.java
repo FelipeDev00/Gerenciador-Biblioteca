@@ -4,6 +4,12 @@ import java.util.List;
 public class Biblioteca {
 
     private List<ItemBiblioteca> itemBiblioteca =  new ArrayList<>();
+    private List<Autor> autores = new ArrayList<>();
+
+    public void adicionarAutor(Autor autor) {
+        autores.add(autor);
+        System.out.println("Autor '" + autor.getNome() + "' adicionado com sucesso!" );
+    }
 
     public void adicionarItem(ItemBiblioteca item){
         itemBiblioteca.add(item);

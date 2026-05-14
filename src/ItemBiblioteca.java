@@ -8,9 +8,6 @@ public abstract class ItemBiblioteca {
         this.id = id;
         this.titulo = titulo;
     }
-    public int getId() {
-        return id;
-    }
     public String getTitulo() {
         return titulo;
     }

@@ -18,7 +18,7 @@ public class Livro extends ItemBiblioteca{
     //Aplicação do método abstrato obrigatório da classe mãe e dizendo como ele será usado pela classe filha 'Livro'. (Polimorfismo)
     @Override
     public void exibirDetalhes() {
-        System.out.println("Livro - ID: " + id + " | Título: " + titulo + " | Autor: " + autor.getNome() + "]");
+        System.out.println("Livro - ID: " + id + " | Título: " + titulo + " | Autor: " + autor.getNome());
     }
 
     @Override

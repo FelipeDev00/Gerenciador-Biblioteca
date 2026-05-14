@@ -11,10 +11,6 @@ public class Autor {
         return nome;
     }
 
-    public String getNacionalidade() {
-        return nacionalidade;
-    }
-
     @Override
     public String toString() {
         return "Autor - " +

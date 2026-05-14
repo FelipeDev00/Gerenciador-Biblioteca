@@ -64,9 +64,7 @@ public class Biblioteca {
             if(item instanceof Livro livro){ //SE o item for da mesma instância que 'Livro', faça.
                 if(autorBusca.equalsIgnoreCase(livro.getAutor().getNome())){
                     livro.exibirDetalhes();
-                    System.out.println(livro);
                     encontrado = true;
-                    System.out.println("\n");
                 }
             }
         }

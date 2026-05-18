@@ -5,6 +5,7 @@ public class Biblioteca {
 
     private List<ItemBiblioteca> itemBiblioteca =  new ArrayList<>(); //Lista que armazena objetos do tipo ItemBiblioteca (Livros e Revistas).
     private List<Autor> autores = new ArrayList<>(); //Lista que armazena objetos do tipo Autor.
+    private List <Usuario> usuarios = new ArrayList<>(); //Lista que armazena os usuários da biblioteca
 
     //Método para adicionar o objeto autor na lista 'autores'.
     //Ao ser chamado, recebe como parâmetro um objeto completo do tipo Autor.
@@ -18,6 +19,11 @@ public class Biblioteca {
     public void adicionarItem(ItemBiblioteca item){
         itemBiblioteca.add(item);
         System.out.println("Item '" + item.getTitulo() + "' adicionado com sucesso!");
+    }
+
+    public void adicionarUsuario(Usuario usuario){
+        usuarios.add(usuario);
+        System.out.println("Usuario '" + usuario.getNome() + "' adicionado com sucesso!");
     }
 
     //Método para listar todos os itens da biblioteca.

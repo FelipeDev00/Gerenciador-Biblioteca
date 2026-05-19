@@ -48,11 +48,17 @@ public class Biblioteca {
         }
     }
 
-    public void listarLivros(){
+    public void listarLivrosDisponiveis(){
         for (ItemBiblioteca item : itemBiblioteca){
             if (item instanceof Livro){
                 System.out.println(item);
             }
+        }
+    }
+
+    public void emprestarItem(int idItem, int idUsuario){
+        if (itemBiblioteca.isEmpty()){
+            System.out.println("Não há item disponível para emprestar. \n");
         }
     }
 

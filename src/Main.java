@@ -131,7 +131,7 @@ void main() {
             } else if (tipoUsuario == 2) {
                 System.out.println(" \nLogin realizado como usuário. \nSelecione a opcao desejada: \n");
                 do {
-                    System.out.println(" 1 - Pegar um item emprestado \n 2 - Listar todos os itens \n 3 - Listar autores cadastrados \n 4 - Procurar livro por autor \n 5 - Voltar a página inicial");
+                    System.out.println(" 1 - Pegar um item emprestado \n 2 - Devolver um item\n 3 - Listar todos os itens \n 4 - Listar autores cadastrados \n 5 - Procurar livro por autor \n 6 - Voltar a página inicial");
                     opcao = sc.nextInt();
                     sc.nextLine();
                     switch (opcao) {
@@ -141,30 +141,34 @@ void main() {
 
                             if (item.equals("1")) {
                                 System.out.println("Ok! Essa é a lista de livros disponíveis no sistema: ");
-                                biblioteca.listarLivros();
+                                biblioteca.listarLivrosDisponiveis();
                                 System.out.println("Digite o nome do livro que você quer pegar emprestado:");
                                 String livro = sc.nextLine();
                             }
                             break;
 
                         case 2:
-                            biblioteca.listarItens();
+
                             break;
 
                         case 3:
-                            biblioteca.listarAutores();
+                            biblioteca.listarItens();
                             break;
 
                         case 4:
+                            biblioteca.listarAutores();
+                            break;
+
+                        case 5:
                             System.out.println("Digite o nome do autor do livro: ");
                             String autorLivro = sc.nextLine();
                             biblioteca.procurarPorAutor(autorLivro);
                             break;
 
-                        case 5:
+                        case 6:
                             System.out.println("Realizando Logon... \n");
                     }
-                } while (opcao != 5);
+                } while (opcao != 6);
 
             } else {
                 System.out.println("Obrigado por utilizar nosso sistema! \n");

@@ -3,7 +3,7 @@ public class Livro extends ItemBiblioteca{
     private String isbn;
 
     //Construtor com parâmetros pré-definidos para inicialização do objeto 'Livro'
-    public Livro(int id, String titulo, Autor autor, String isbn) {
+public Livro(int id, String titulo, Autor autor, String isbn) {
         super(id, titulo); //Chama os atributos já definidos no construtor da classe mãe.
 
         //Atributos próprios que só o objeto 'Livro' tem.

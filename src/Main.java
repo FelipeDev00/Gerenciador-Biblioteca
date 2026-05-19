@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 void main() {
+    int tipoUsuario = 0;
     int opcao;
     int id = 1;
 
@@ -9,109 +10,157 @@ void main() {
     //Inicialização do objeto biblioteca para usar seus métodos públicos na classe Main.
     Biblioteca biblioteca = new Biblioteca();
 
-        //Loop DO-WHILE para fazer as perguntas (DO) depois verificar a resposta (WHILE)
-        do {
-            try{
-                System.out.println(" 1 - Cadastrar autor \n 2 - Adicionar item \n 3 - Listar todos os itens \n 4 - Listar autores cadastrados \n 5 - Procurar livro por autor \n 6 - Sair");
-                opcao = sc.nextInt();
-                sc.nextLine();
-                switch (opcao){
-                    case 1:
-                        System.out.println("Digite o nome do autor: ");
-                        String nomeAutor = sc.nextLine(); //Armazena o nome do autor
-                        System.out.println("Digite a nacionalidade do autor do livro:");
-                        String nacionalidade = sc.nextLine(); //Armazena a nacionalidade do autor
+    //Loop DO-WHILE para fazer as perguntas (DO) depois verificar a resposta (WHILE)
+    do {
+        try {
+            System.out.println("Bem vindo ao sistema da biblioteca! Selecione a opção desejada \n");
+            System.out.println(" 1 - Realizar login como funcionário \n 2 - Realizar login como usuário \n 3 - Sair do sistema");
+            tipoUsuario = sc.nextInt();
+            if (tipoUsuario == 1) {
+                System.out.println(" \nLogin realizado como funcionário.\nSelecione a opção desejada: \n");
+                do {
+                    System.out.println(" 1 - Cadastrar usuário \n 2 - Cadastrar autor \n 3 - Adicionar item (Livro ou Revista) \n 4 - Listar usuários cadastrados \n 5 - Listar autores cadastrados \n 6 - Listar todos os itens cadastrados \n 7 - Procurar livro por autor \n 8 - Voltar a página inicial");
+                    opcao = sc.nextInt();
+                    sc.nextLine();
+                    switch (opcao) {
+                        case 1:
 
-                        //Verifica se o nome ou a nacionalidade do autor estão vazias antes de prosseguir.
-                        if (nomeAutor.isBlank() || nacionalidade.isBlank()) {
-                            System.out.println("ERRO: Preencha todos os campos para adicionar o autor.");
                             break;
-                        }
-                        //Com tudo preenchido, é criado um novo objeto do tipo Autor com nome e nacionalidade
-                        //É adicionado o novo objeto do tipo autor na biblioteca
-                        Autor novoAutor = new Autor(nomeAutor, nacionalidade);
-                        biblioteca.adicionarAutor(novoAutor);
-                        break;
+                        case 2:
+                            System.out.println("Digite o nome do autor: ");
+                            String nomeAutor = sc.nextLine(); //Armazena o nome do autor
+                            System.out.println("Digite a nacionalidade do autor do livro:");
+                            String nacionalidade = sc.nextLine(); //Armazena a nacionalidade do autor
 
-                    case 2:
-                        System.out.println("Qual item você deseja adicionar? (Selecione apenas o número correspondente) \n 1 - Livro \n 2 - Revista");
-                        String item = sc.nextLine(); //Lê e armazena a opção digitada pelo usuário.
-
-                        //Se a opção for '1'(livro), pergunta ao usuário informações sobre o livro.
-                        if(item.equals("1")){
-                            System.out.println("Digite o nome do livro: ");
-                            String nomeLivro = sc.nextLine();
-                            System.out.println("Digite o nome do autor do livro: ");
-                            String autorLivro = sc.nextLine();
-                            System.out.println("Digite o ISBN do livro: ");
-                            String isbn = sc.nextLine();
-
-                            //Verifica se todas as informações foram preenchidas antes de continuar.
-                            if (nomeLivro.isBlank() || autorLivro.isBlank() || isbn.isBlank()) {
-                                System.out.println("ERRO: Todos os campos são obrigatórios. O livro não foi adicionado.");
+                            //Verifica se o nome ou a nacionalidade do autor estão vazias antes de prosseguir.
+                            if (nomeAutor.isBlank() || nacionalidade.isBlank()) {
+                                System.out.println("ERRO: Preencha todos os campos para adicionar o autor.");
+                                break;
                             }
+                            //Com tudo preenchido, é criado um novo objeto do tipo Autor com nome e nacionalidade
+                            //É adicionado o novo objeto do tipo autor na biblioteca
+                            Autor novoAutor = new Autor(nomeAutor, nacionalidade);
+                            biblioteca.adicionarAutor(novoAutor);
+                            break;
 
-                            else {
-                                //Chama o método que busca o objeto Autor na lista. Se encontrar, traz o objeto para o Main; se não, traz null.
-                                Autor validarAutor = biblioteca.validarAutor(autorLivro);
-                                if (validarAutor == null) {
-                                    System.out.println("ERRO: O autor não existe ou não foi cadastrado. \n");
+                        case 3:
+                            System.out.println("Qual item você deseja adicionar? (Selecione apenas o número correspondente) \n 1 - Livro \n 2 - Revista");
+                            String item = sc.nextLine(); //Lê e armazena a opção digitada pelo usuário.
+
+                            //Se a opção for '1'(livro), pergunta ao usuário informações sobre o livro.
+                            if (item.equals("1")) {
+                                System.out.println("Digite o nome do livro: ");
+                                String nomeLivro = sc.nextLine();
+                                System.out.println("Digite o nome do autor do livro: ");
+                                String autorLivro = sc.nextLine();
+                                System.out.println("Digite o ISBN do livro: ");
+                                String isbn = sc.nextLine();
+
+                                //Verifica se todas as informações foram preenchidas antes de continuar.
+                                if (nomeLivro.isBlank() || autorLivro.isBlank() || isbn.isBlank()) {
+                                    System.out.println("ERRO: Todos os campos são obrigatórios. O livro não foi adicionado.");
                                 } else {
-                                    //Com tudo validado, é criado um novo objeto do tipo Livro e adicionado a biblioteca.
-                                    Livro novoLivro = new Livro(id, nomeLivro,validarAutor, isbn);
-                                    biblioteca.adicionarItem(novoLivro);
+                                    //Chama o método que busca o objeto Autor na lista. Se encontrar, traz o objeto para o Main; se não, traz null.
+                                    Autor validarAutor = biblioteca.validarAutor(autorLivro);
+                                    if (validarAutor == null) {
+                                        System.out.println("ERRO: O autor não existe ou não foi cadastrado. \n");
+                                    } else {
+                                        //Com tudo validado, é criado um novo objeto do tipo Livro e adicionado a biblioteca.
+                                        Livro novoLivro = new Livro(id, nomeLivro, validarAutor, isbn);
+                                        biblioteca.adicionarItem(novoLivro);
+                                        id++;
+                                    }
+                                }
+                                //Se o item for '2'(revista), pergunta ao usuário informações sobre a revista
+                            } else if (item.equals("2")) {
+                                System.out.println("Digite o nome da Revista: ");
+                                String nomeRevista = sc.nextLine();
+                                System.out.println("Digite a edição da Revista: ");
+                                int edicao = sc.nextInt();
+
+                                //Verifica se os campos foram preenchidos.
+                                if (nomeRevista.isBlank() || edicao == 0) {
+                                    System.out.println("ERRO: Todos os campos são obrigatórios. O livro não foi adicionado.");
+                                } else {
+                                    //Com tudo preenchido, é criado um novo objeto do tipo Revista e adicionado a biblioteca.
+                                    Revista novaRevista = new Revista(id, nomeRevista, edicao);
+                                    biblioteca.adicionarItem(novaRevista);
                                     id++;
                                 }
                             }
-                            //Se o item for '2'(revista), pergunta ao usuário informações sobre a revista
-                        } else if (item.equals("2")) {
-                            System.out.println("Digite o nome da Revista: ");
-                            String nomeRevista = sc.nextLine();
-                            System.out.println("Digite a edição da Revista: ");
-                            int edicao = sc.nextInt();
+                            break;
 
-                            //Verifica se os campos foram preenchidos.
-                            if (nomeRevista.isBlank() || edicao == 0) {
-                                System.out.println("ERRO: Todos os campos são obrigatórios. O livro não foi adicionado.");
-                            } else {
-                                //Com tudo preenchido, é criado um novo objeto do tipo Revista e adicionado a biblioteca.
-                                Revista novaRevista = new Revista(id, nomeRevista, edicao);
-                                biblioteca.adicionarItem(novaRevista);
-                                id++;
-                            }
-                        }
-                        break;
+                        case 4:
+                            biblioteca.listarUsuarios();
+                            break;
 
-                    case 3:
-                        biblioteca.listarItens(); //Chama o método que lista todos os itens da biblioteca (Livros e Revistas).
-                        break;
+                        case 5:
+                            biblioteca.listarAutores(); //Chama o método que lista todos os autores e seus dados cadastrados na biblioteca.
+                            break;
 
-                    case 4:
-                        biblioteca.listarAutores(); //Chama o método que lista todos os autores e seus dados cadastrados na biblioteca.
-                        break;
+                        case 6:
+                            biblioteca.listarItens(); //Chama o método que lista todos os itens da biblioteca (Livros e Revistas).
+                            break;
 
-                    case 5:
-                        System.out.println("Digite o nome do autor do livro: ");
-                        String autorLivro = sc.nextLine();
-                        biblioteca.procurarPorAutor(autorLivro); //Chama o método que procura um livro específico na lista relacionado ao nome do autor digitado pelo usuário e mostra seus detalhes.
-                        break;
+                        case 7:
+                            System.out.println("Digite o nome do autor do livro: ");
+                            String autorLivro = sc.nextLine();
+                            biblioteca.procurarPorAutor(autorLivro); //Chama o método que procura um livro específico na lista relacionado ao nome do autor digitado pelo usuário e mostra seus detalhes.
+                            break;
 
 
+                        case 8:
+                            System.out.println("Realizando Logon... \n");
+                            break;
 
-                    case 6:
-                        System.out.println("Obrigado por utilizar nosso sistema! ");
-                        break;
+                        default:
+                            System.out.println("Opção inválida. \n");
+                    }
 
-                    default:
-                        System.out.println("Opção inválida. \n");
-                }
-            }catch (InputMismatchException e) {
-                System.out.println("ERRO: O sistema lê apenas números inteiros. \n");
-                sc.nextLine();
-                opcao = 0;
+                } while (opcao != 8);
+
+
+            } else if (tipoUsuario == 2) {
+                System.out.println(" \nLogin realizado como usuário. \nSelecione a opcao desejada: \n");
+                do {
+                    System.out.println(" 1 - Pegar um item emprestado \n 2 - Listar todos os itens \n 3 - Listar autores cadastrados \n 4 - Procurar livro por autor \n 5 - Voltar a página inicial");
+                    opcao = sc.nextInt();
+                    sc.nextLine();
+                    switch (opcao) {
+                        case 1:
+
+                            break;
+
+                        case 2:
+                            biblioteca.listarItens();
+                            break;
+
+                        case 3:
+                            biblioteca.listarAutores();
+                            break;
+
+                        case 4:
+                            System.out.println("Digite o nome do autor do livro: ");
+                            String autorLivro = sc.nextLine();
+                            biblioteca.procurarPorAutor(autorLivro);
+                            break;
+
+                        case 5:
+                            System.out.println("Realizando Logon... \n");
+                    }
+                } while (opcao != 5);
+
+            } else {
+                System.out.println("Obrigado por utilizar nosso sistema! \n");
             }
 
-        } while (opcao != 6);
+        } catch (InputMismatchException e) {
+            System.out.println("ERRO: Selecione apenas o número da opção desejada. \n");
+            sc.nextLine();
+            opcao = 0;
+        }
+
+    } while (tipoUsuario != 3);
 
 
 }

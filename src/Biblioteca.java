@@ -26,7 +26,16 @@ public class Biblioteca {
         usuarios.add(usuario);
         System.out.println("Usuario '" + usuario.getNome() + "' adicionado com sucesso!");
     }
-
+    //Método para listar todos os usuários da biblioteca.
+    public void listarUsuarios(){
+        if (usuarios.isEmpty()){
+            System.out.println("Nenhum usuario encontrado \n");
+        } else {
+            for (Usuario usuario : usuarios){
+                System.out.println(usuario);
+            }
+        }
+    }
     //Método para listar todos os itens da biblioteca.
     //Percorre a lista itemBiblioteca com for each, armazena os itens na variavel 'item' do tipo 'ItemBiblioteca' e mostra os resultados 1 por 1 até o final da lista.
    public void listarItens(){

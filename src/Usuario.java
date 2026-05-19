@@ -4,7 +4,7 @@ import java.util.List;
 public class Usuario {
     private String nome;
     private String cpf;
-    private int id;
+    private int id = 1;
 
     private List<ItemBiblioteca> itensEmprestados = new ArrayList<>();
 
@@ -35,5 +35,13 @@ public class Usuario {
 
     public List<ItemBiblioteca> getItensEmprestados() {
         return itensEmprestados;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario - ID: " + id +
+                " | Nome: " + nome +
+                " | CPF: " + cpf +
+                " | Itens emprestados: " + itensEmprestados;
     }
 }

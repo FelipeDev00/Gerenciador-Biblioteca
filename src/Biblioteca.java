@@ -24,7 +24,7 @@ public class Biblioteca {
     //Recebe como parâmetro um objeto completo do tipo 'Usuário' e executa o método
     public void adicionarUsuario(Usuario usuario){
         usuarios.add(usuario);
-        System.out.println("Usuario '" + usuario.getNome() + "' adicionado com sucesso!");
+        System.out.println("Usuario '" + usuario.getNome() + "' adicionado com sucesso! \n");
     }
     //Método para listar todos os usuários da biblioteca.
     public void listarUsuarios(){
@@ -43,6 +43,14 @@ public class Biblioteca {
             System.out.println("Nenhum item encontrado \n"); //Verifica se a lista está vazia antes de executar o for each.
         } else {
             for(ItemBiblioteca item : itemBiblioteca){
+                System.out.println(item);
+            }
+        }
+    }
+
+    public void listarLivros(){
+        for (ItemBiblioteca item : itemBiblioteca){
+            if (item instanceof Livro){
                 System.out.println(item);
             }
         }

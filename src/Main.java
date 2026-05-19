@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 void main() {
     int tipoUsuario = 0;
+    int idUsuario = 1;
     int opcao;
     int id = 1;
 
@@ -17,13 +18,20 @@ void main() {
             System.out.println(" 1 - Realizar login como funcionário \n 2 - Realizar login como usuário \n 3 - Sair do sistema");
             tipoUsuario = sc.nextInt();
             if (tipoUsuario == 1) {
-                System.out.println(" \nLogin realizado como funcionário.\nSelecione a opção desejada: \n");
+                System.out.println(" \nLogin realizado como funcionário.\nSelecione a opção desejada:");
                 do {
-                    System.out.println(" 1 - Cadastrar usuário \n 2 - Cadastrar autor \n 3 - Adicionar item (Livro ou Revista) \n 4 - Listar usuários cadastrados \n 5 - Listar autores cadastrados \n 6 - Listar todos os itens cadastrados \n 7 - Procurar livro por autor \n 8 - Voltar a página inicial");
+                    System.out.println(" \n 1 - Cadastrar usuário \n 2 - Cadastrar autor \n 3 - Adicionar item (Livro ou Revista) \n 4 - Listar usuários cadastrados \n 5 - Listar autores cadastrados \n 6 - Listar todos os itens cadastrados \n 7 - Procurar livro por autor \n 8 - Voltar a página inicial");
                     opcao = sc.nextInt();
                     sc.nextLine();
                     switch (opcao) {
                         case 1:
+                            System.out.println("Digite o nome completo do usuário: ");
+                            String nomeUsuario = sc.nextLine();
+                            System.out.println("Digite o CPF do usuário: ");
+                            String cpfUsuario = sc.nextLine();
+                            Usuario novoUsuario = new Usuario(nomeUsuario, cpfUsuario, idUsuario);
+                            biblioteca.adicionarUsuario(novoUsuario);
+                            idUsuario++;
 
                             break;
                         case 2:
@@ -128,7 +136,15 @@ void main() {
                     sc.nextLine();
                     switch (opcao) {
                         case 1:
+                            System.out.println("Qual item você deseja pegar emprestado? Livro [1] | Revista [2] \n Digite somente o número do item desejado: ");
+                            String item = sc.nextLine();
 
+                            if (item.equals("1")) {
+                                System.out.println("Ok! Essa é a lista de livros disponíveis no sistema: ");
+                                biblioteca.listarLivros();
+                                System.out.println("Digite o nome do livro que você quer pegar emprestado:");
+                                String livro = sc.nextLine();
+                            }
                             break;
 
                         case 2:

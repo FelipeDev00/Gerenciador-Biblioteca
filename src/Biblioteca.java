@@ -50,8 +50,19 @@ public class Biblioteca {
 
     public void listarLivrosDisponiveis(){
         for (ItemBiblioteca item : itemBiblioteca){
-            if (item instanceof Livro){
+            if (item instanceof Livro && item.isDisponivel()){
                 System.out.println(item);
+            } else {
+                System.out.println("Não há livros disponíveis no momento. \n");
+            }
+        }
+    }
+    public void listarRevistasDisponiveis(){
+        for (ItemBiblioteca item : itemBiblioteca){
+            if (item instanceof Revista && item.isDisponivel()){
+                System.out.println(item);
+            } else {
+                System.out.println("Não há revistas disponíveis no momento.");
             }
         }
     }

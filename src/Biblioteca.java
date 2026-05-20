@@ -50,16 +50,17 @@ public class Biblioteca {
 
     public void listarLivrosDisponiveis(){
         for (ItemBiblioteca item : itemBiblioteca){
-            if (item instanceof Livro && item.isDisponivel()){
+            if (item instanceof Livro && item.isDisponivel() == true){
                 System.out.println(item);
             } else {
                 System.out.println("Não há livros disponíveis no momento. \n");
+                break;
             }
         }
     }
     public void listarRevistasDisponiveis(){
         for (ItemBiblioteca item : itemBiblioteca){
-            if (item instanceof Revista && item.isDisponivel()){
+            if (item instanceof Revista && item.isDisponivel() == true){
                 System.out.println(item);
             } else {
                 System.out.println("Não há revistas disponíveis no momento.");
@@ -72,6 +73,7 @@ public class Biblioteca {
             System.out.println("Não há item disponível para emprestar. \n");
         }
     }
+
 
     //Método para listar todos os autores cadastrados no sistema.
     //Mesma dinâmica do método 'listarItens', mas com variável do tipo Autor.

@@ -1,6 +1,7 @@
 public class Livro extends ItemBiblioteca{
     private Autor autor;
     private String isbn;
+    private String disponivel;
 
     //Construtor com parâmetros pré-definidos para inicialização do objeto 'Livro'
 public Livro(int id, String titulo, Autor autor, String isbn) {
@@ -18,7 +19,12 @@ public Livro(int id, String titulo, Autor autor, String isbn) {
     //Aplicação do método abstrato obrigatório da classe mãe e dizendo como ele será usado pela classe filha 'Livro'. (Polimorfismo)
     @Override
     public void exibirDetalhes() {
-        System.out.println("Livro - ID: " + id + " | Título: " + titulo + " | Autor: " + autor.getNome());
+    if (isDisponivel() == true){
+        disponivel = "Disponível";
+    } else {
+        disponivel = "Não disponível";
+    }
+        System.out.println("Livro - ID: " + id + " | Título: " + titulo + " | Autor: " + autor.getNome() + " | ISBN: " + isbn + " | " + disponivel);
     }
 
     @Override

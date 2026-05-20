@@ -140,10 +140,18 @@ void main() {
                             String item = sc.nextLine();
 
                             if (item.equals("1")) {
-                                System.out.println("Ok! Essa é a lista de livros disponíveis no sistema: ");
+                                System.out.println("Ok! Essa é a lista de livros disponíveis no sistema: \n");
                                 biblioteca.listarLivrosDisponiveis();
-                                System.out.println("Digite o nome do livro que você quer pegar emprestado:");
+                                System.out.println("Digite o nome do livro que você quer pegar emprestado: ");
                                 String livro = sc.nextLine();
+
+
+
+                            } else if (item.equals("2")) {
+                                System.out.println("Ok! Essa é a lista de revistas disponíveis no sistema: ");
+                                biblioteca.listarRevistasDisponiveis();
+                                System.out.println("Digite o nome da revista que você quer pegar emprestado: ");
+                                String revista = sc.nextLine();
                             }
                             break;
 

@@ -48,23 +48,31 @@ public class Biblioteca {
         }
     }
 
-    public void listarLivrosDisponiveis(){
-        for (ItemBiblioteca item : itemBiblioteca){
-            if (item instanceof Livro && item.isDisponivel() == true){
+    public void listarLivrosDisponiveis() {
+        boolean encontrouAlgum = false;
+
+        for (ItemBiblioteca item : itemBiblioteca) {
+            // Verifica se é Livro E se está disponível
+            if (item instanceof Livro && item.isDisponivel()) {
                 System.out.println(item);
-            } else {
-                System.out.println("Não há livros disponíveis no momento. \n");
-                break;
+                encontrouAlgum = true;
             }
         }
+        if (!encontrouAlgum) {
+            System.out.println("Não há livros disponíveis no momento. \n");
+        }
     }
-    public void listarRevistasDisponiveis(){
-        for (ItemBiblioteca item : itemBiblioteca){
-            if (item instanceof Revista && item.isDisponivel() == true){
+    public void listarRevistasDisponiveis() {
+        boolean encontrouAlgum = false;
+
+        for (ItemBiblioteca item : itemBiblioteca) {
+            if (item instanceof Revista && item.isDisponivel()) {
                 System.out.println(item);
-            } else {
-                System.out.println("Não há revistas disponíveis no momento.");
+                encontrouAlgum = true;
             }
+        }
+        if (!encontrouAlgum) {
+            System.out.println("Não há revistas disponíveis no momento. \n");
         }
     }
 

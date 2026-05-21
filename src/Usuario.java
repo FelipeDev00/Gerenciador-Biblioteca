@@ -18,12 +18,12 @@ public class Usuario {
         return nome;
     }
 
-    public String getCpf() {
-        return cpf;
-    }
-
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void pegarItem(ItemBiblioteca item) {

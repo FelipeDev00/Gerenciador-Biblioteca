@@ -79,6 +79,13 @@ public class Biblioteca {
     public void emprestarItem(int idItem, int idUsuario){
         if (itemBiblioteca.isEmpty()){
             System.out.println("Não há item disponível para emprestar. \n");
+        } else {
+            for (ItemBiblioteca item : itemBiblioteca){
+                if (item.id == idItem && item.isDisponivel()) {
+                    ItemBiblioteca itemEmprestado = item;
+                    
+                }
+            }
         }
     }
 
@@ -104,6 +111,26 @@ public class Biblioteca {
             }
         }
         return null; //Retorna null caso não ache nenhum autor com o mesmo nome do parâmetro passado ao método.
+    }
+
+    public int getIdUsuario(String nome){
+        int idUsuario = 0;
+        for(Usuario usuario : usuarios) {
+            if (usuario.getNome().equalsIgnoreCase(nome)) {
+                idUsuario = usuario.getId();
+            }
+        }
+        return idUsuario;
+    }
+
+    public int getIdLivro(String nome){
+        int idLivro = 0;
+        for(ItemBiblioteca item : itemBiblioteca) {
+            if (item.getTitulo().equalsIgnoreCase(nome)) {
+                idLivro = item.id;
+            }
+        }
+        return idLivro;
     }
 
     //Método para procurar um livro que seja relacionado a um autor específico.

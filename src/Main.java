@@ -29,10 +29,11 @@ void main() {
                             String nomeUsuario = sc.nextLine();
                             System.out.println("Digite o CPF do usuário: ");
                             String cpfUsuario = sc.nextLine();
+
                             Usuario novoUsuario = new Usuario(nomeUsuario, cpfUsuario, idUsuario);
+                            novoUsuario.setId(idUsuario);
                             biblioteca.adicionarUsuario(novoUsuario);
                             idUsuario++;
-
                             break;
                         case 2:
                             System.out.println("Digite o nome do autor: ");
@@ -144,6 +145,14 @@ void main() {
                                 biblioteca.listarLivrosDisponiveis();
                                 System.out.println("Digite o nome do livro que você quer pegar emprestado: ");
                                 String livro = sc.nextLine();
+                                biblioteca.getIdLivro(livro);
+                                int idLivro = biblioteca.getIdLivro(livro);
+                                System.out.println("Qual o nome do seu usuário cadastrado no sistema? ");
+                                String nomeUsuario = sc.nextLine();
+                                biblioteca.getIdUsuario(nomeUsuario);
+                                int usuarioId = biblioteca.getIdUsuario(nomeUsuario);
+                                biblioteca.emprestarItem(idLivro, usuarioId);
+
 
 
 
@@ -156,7 +165,11 @@ void main() {
                             break;
 
                         case 2:
-
+                            System.out.println("Digite o nome do livro: ");
+                            String nomeLivro = sc.nextLine();
+                            biblioteca.getIdLivro(nomeLivro);
+                            int idLivro = biblioteca.getIdLivro(nomeLivro);
+                            System.out.println(idLivro);
                             break;
 
                         case 3:

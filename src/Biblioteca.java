@@ -44,8 +44,8 @@ public class Biblioteca {
         } else {
             for(ItemBiblioteca item : itemBiblioteca){
                 item.exibirDetalhes();
-                System.out.println("\n");
             }
+            System.out.println("");
         }
     }
 
@@ -56,28 +56,24 @@ public class Biblioteca {
             // Verifica se é Livro E se está disponível
             if (item instanceof Livro && item.isDisponivel()) {
                 encontrouAlgum = true;
-                System.out.println("Ok! Essa é a lista de livros disponíveis no sistema: \n");
-                item.exibirDetalhes();
+                System.out.println(item);
             }
-        }
-        if (!encontrouAlgum) {
-            System.out.println("Não há livros disponíveis no momento. \n");
         }
         return encontrouAlgum;
     }
-    public void listarRevistasDisponiveis() {
+    public boolean listarRevistasDisponiveis() {
         boolean encontrouAlgum = false;
 
         for (ItemBiblioteca item : itemBiblioteca) {
             if (item instanceof Revista && item.isDisponivel()) {
-                System.out.println("Ok! Essa é a lista de revistas disponíveis no sistema: \n");
-                item.exibirDetalhes();
                 encontrouAlgum = true;
+                item.exibirDetalhes();
+
+            }  else  {
+                encontrouAlgum = false;
             }
         }
-        if (!encontrouAlgum) {
-            System.out.println("Não há revistas disponíveis no momento. \n");
-        }
+        return encontrouAlgum;
     }
 
     public void emprestarItem(int idItem, int idUsuario){
@@ -86,12 +82,12 @@ public class Biblioteca {
                 for (Usuario usuario : usuarios){
                     if (usuario.getId() == idUsuario){
                         if (item instanceof Livro){
-                            System.out.println("O livro " + item.getTitulo() + " foi emprestado para o usuário " + usuario.getNome() + "!");
+                            System.out.println("O livro " + item.getTitulo() + " foi emprestado para o usuário " + usuario.getNome() + "! \n");
                             usuario.pegarItem(item);
                             item.setDisponivel(false);
                         }
                         if(item instanceof Revista){
-                            System.out.println("A revista " + item.getTitulo() + " foi emprestada para o usuário " + usuario.getNome() + "!");
+                            System.out.println("A revista " + item.getTitulo() + " foi emprestada para o usuário " + usuario.getNome() + "! \n");
                             usuario.pegarItem(item);
                             item.setDisponivel(false);
                         }

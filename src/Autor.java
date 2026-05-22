@@ -13,8 +13,7 @@ public class Autor {
 
     @Override
     public String toString() {
-        return "Autor - " +
-                "Nome: " + nome  +
+        return "Autor: " + nome +
                 " | Nacionalidade: " + nacionalidade;
     }
 }

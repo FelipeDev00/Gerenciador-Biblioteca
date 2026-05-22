@@ -91,13 +91,38 @@ public class Biblioteca {
                             usuario.pegarItem(item);
                             item.setDisponivel(false);
                         }
-
                     }
                 }
             }
         }
     }
 
+    public void devolucaoItem(int idItem, int idUsuario){
+        for (ItemBiblioteca item : itemBiblioteca){
+            if (item.id == idItem && !item.isDisponivel()) {
+                for (Usuario usuario : usuarios){
+                    if (usuario.getId() == idUsuario){
+                        usuario.devolverItem(item);
+                        item.setDisponivel(true);
+                        if (item instanceof Livro){
+                            System.out.println("O livro " + item.getTitulo() + " foi devolvido com sucesso! \n");
+                        }
+                        if (item instanceof Revista){
+                            System.out.println("A revista " + item.getTitulo() + " foi devolvida com sucesso! \n");
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void listarItensEmprestados(String nomeUsuario){
+        for (Usuario usuario : usuarios){
+            if (usuario.getNome().equalsIgnoreCase(nomeUsuario)){
+                System.out.println(usuario.getItensEmprestados());
+            }
+        }
+    }
 
     //Método para listar todos os autores cadastrados no sistema.
     //Mesma dinâmica do método 'listarItens', mas com variável do tipo Autor.

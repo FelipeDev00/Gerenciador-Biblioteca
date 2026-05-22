@@ -179,7 +179,18 @@ void main() {
                             break;
 
                         case 2:
-                            
+                            System.out.println("Digite seu nome completo cadastrado no sistema: ");
+                            String nomeUsuario = sc.nextLine();
+                            int usuarioId = biblioteca.getIdUsuario(nomeUsuario);
+                            System.out.println("\nLista de itens emprestados para " + nomeUsuario + ":\n");
+                            biblioteca.listarItensEmprestados(nomeUsuario);
+                            System.out.println("Digite o nome do item que deseja devolver: ");
+                            String nomeItem = sc.nextLine();
+                            int  idItem = biblioteca.getIdItem(nomeItem);
+                            biblioteca.devolucaoItem(idItem, usuarioId);
+
+
+
                             break;
 
                         case 3:

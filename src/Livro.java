@@ -29,7 +29,7 @@ public Livro(int id, String titulo, Autor autor, String isbn) {
 
     @Override
     public String toString() {
-        return "Livro " + id +" - " +
+        return "Livro - ID: " + id +
                 " Titulo: " + titulo +
                 " | Autor: " + autor +
                 " | isbn: " + isbn;

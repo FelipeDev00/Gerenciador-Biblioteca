@@ -43,7 +43,7 @@ public class Biblioteca {
             System.out.println("Nenhum item encontrado \n"); //Verifica se a lista está vazia antes de executar o for each.
         } else {
             for(ItemBiblioteca item : itemBiblioteca){
-                System.out.println(item);
+                item.exibirDetalhes();
             }
         }
     }
@@ -54,7 +54,8 @@ public class Biblioteca {
         for (ItemBiblioteca item : itemBiblioteca) {
             // Verifica se é Livro E se está disponível
             if (item instanceof Livro && item.isDisponivel()) {
-                System.out.println(item);
+                item.exibirDetalhes();
+                System.out.println("\n");
                 encontrouAlgum = true;
             }
         }
@@ -67,7 +68,8 @@ public class Biblioteca {
 
         for (ItemBiblioteca item : itemBiblioteca) {
             if (item instanceof Revista && item.isDisponivel()) {
-                System.out.println(item);
+                item.exibirDetalhes();
+                System.out.println("\n");
                 encontrouAlgum = true;
             }
         }
@@ -77,13 +79,22 @@ public class Biblioteca {
     }
 
     public void emprestarItem(int idItem, int idUsuario){
-        if (itemBiblioteca.isEmpty()){
-            System.out.println("Não há item disponível para emprestar. \n");
-        } else {
-            for (ItemBiblioteca item : itemBiblioteca){
-                if (item.id == idItem && item.isDisponivel()) {
-                    ItemBiblioteca itemEmprestado = item;
-                    
+        for (ItemBiblioteca item : itemBiblioteca){
+            if (item.id == idItem && item.isDisponivel()) {
+                for (Usuario usuario : usuarios){
+                    if (usuario.getId() == idUsuario){
+                        if (item instanceof Livro){
+                            System.out.println("O livro " + item.getTitulo() + " foi emprestado para o usuário " + usuario.getNome() + "!");
+                            usuario.pegarItem(item);
+                            item.setDisponivel(false);
+                        }
+                        if(item instanceof Revista){
+                            System.out.println("A revista " + item.getTitulo() + " foi emprestada para o usuário " + usuario.getNome() + "!");
+                            usuario.pegarItem(item);
+                            item.setDisponivel(false);
+                        }
+
+                    }
                 }
             }
         }
@@ -123,14 +134,19 @@ public class Biblioteca {
         return idUsuario;
     }
 
-    public int getIdLivro(String nome){
-        int idLivro = 0;
+    public int getIdItem(String nome){
+        int idItem = 0;
         for(ItemBiblioteca item : itemBiblioteca) {
-            if (item.getTitulo().equalsIgnoreCase(nome)) {
-                idLivro = item.id;
+            if (item instanceof Livro && item.getTitulo().equalsIgnoreCase(nome) && item.isDisponivel()) {
+                idItem = item.id;
+            } else if (item instanceof Revista && item.getTitulo().equalsIgnoreCase(nome) && item.isDisponivel()) {
+                idItem = item.id;
+            } else {
+                System.out.println("Nenhum item encontrado");
             }
+
         }
-        return idLivro;
+        return idItem;
     }
 
     //Método para procurar um livro que seja relacionado a um autor específico.

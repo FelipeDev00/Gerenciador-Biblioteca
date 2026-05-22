@@ -142,14 +142,14 @@ void main() {
 
                             if (item.equals("1")) {
                                 System.out.println("Ok! Essa é a lista de livros disponíveis no sistema: \n");
+                                System.out.println("\n");
                                 biblioteca.listarLivrosDisponiveis();
                                 System.out.println("Digite o nome do livro que você quer pegar emprestado: ");
                                 String livro = sc.nextLine();
-                                biblioteca.getIdLivro(livro);
-                                int idLivro = biblioteca.getIdLivro(livro);
-                                System.out.println("Qual o nome do seu usuário cadastrado no sistema? ");
+                                int idLivro = biblioteca.getIdItem(livro);
+                                System.out.println("\n");
+                                System.out.println("Digite o nome do seu usuário cadastrado no sistema: ");
                                 String nomeUsuario = sc.nextLine();
-                                biblioteca.getIdUsuario(nomeUsuario);
                                 int usuarioId = biblioteca.getIdUsuario(nomeUsuario);
                                 biblioteca.emprestarItem(idLivro, usuarioId);
 
@@ -158,19 +158,21 @@ void main() {
 
                             } else if (item.equals("2")) {
                                 System.out.println("Ok! Essa é a lista de revistas disponíveis no sistema: ");
+                                System.out.println("\n");
                                 biblioteca.listarRevistasDisponiveis();
                                 System.out.println("Digite o nome da revista que você quer pegar emprestado: ");
                                 String revista = sc.nextLine();
+                                int idRevista = biblioteca.getIdItem(revista);
+                                System.out.println("\n");
+                                System.out.println("Digite o nome do seu usuário cadastrado no sistema: ");
+                                String nomeUsuario = sc.nextLine();
+                                int usuarioId = biblioteca.getIdUsuario(nomeUsuario);
+                                biblioteca.emprestarItem(idRevista, usuarioId);
                             }
                             break;
 
                         case 2:
-                            System.out.println("Digite o nome do livro: ");
-                            String nomeLivro = sc.nextLine();
-                            biblioteca.getIdLivro(nomeLivro);
-                            int idLivro = biblioteca.getIdLivro(nomeLivro);
-                            System.out.println(idLivro);
-                            break;
+                            biblioteca.listarLivrosDisponiveis();;
 
                         case 3:
                             biblioteca.listarItens();

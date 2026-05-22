@@ -44,32 +44,34 @@ public class Biblioteca {
         } else {
             for(ItemBiblioteca item : itemBiblioteca){
                 item.exibirDetalhes();
+                System.out.println("\n");
             }
         }
     }
 
-    public void listarLivrosDisponiveis() {
+    public boolean listarLivrosDisponiveis() {
         boolean encontrouAlgum = false;
 
         for (ItemBiblioteca item : itemBiblioteca) {
             // Verifica se é Livro E se está disponível
             if (item instanceof Livro && item.isDisponivel()) {
-                item.exibirDetalhes();
-                System.out.println("\n");
                 encontrouAlgum = true;
+                System.out.println("Ok! Essa é a lista de livros disponíveis no sistema: \n");
+                item.exibirDetalhes();
             }
         }
         if (!encontrouAlgum) {
             System.out.println("Não há livros disponíveis no momento. \n");
         }
+        return encontrouAlgum;
     }
     public void listarRevistasDisponiveis() {
         boolean encontrouAlgum = false;
 
         for (ItemBiblioteca item : itemBiblioteca) {
             if (item instanceof Revista && item.isDisponivel()) {
+                System.out.println("Ok! Essa é a lista de revistas disponíveis no sistema: \n");
                 item.exibirDetalhes();
-                System.out.println("\n");
                 encontrouAlgum = true;
             }
         }
@@ -139,10 +141,11 @@ public class Biblioteca {
         for(ItemBiblioteca item : itemBiblioteca) {
             if (item instanceof Livro && item.getTitulo().equalsIgnoreCase(nome) && item.isDisponivel()) {
                 idItem = item.id;
-            } else if (item instanceof Revista && item.getTitulo().equalsIgnoreCase(nome) && item.isDisponivel()) {
+                break;
+            }
+            if (item instanceof Revista && item.getTitulo().equalsIgnoreCase(nome) && item.isDisponivel()) {
                 idItem = item.id;
-            } else {
-                System.out.println("Nenhum item encontrado");
+                break;
             }
 
         }

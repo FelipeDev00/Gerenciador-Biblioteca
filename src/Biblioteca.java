@@ -56,7 +56,7 @@ public class Biblioteca {
             // Verifica se é Livro E se está disponível
             if (item instanceof Livro && item.isDisponivel()) {
                 encontrouAlgum = true;
-                System.out.println(item);
+                item.exibirDetalhes();
             }
         }
         return encontrouAlgum;
@@ -82,12 +82,12 @@ public class Biblioteca {
                 for (Usuario usuario : usuarios){
                     if (usuario.getId() == idUsuario){
                         if (item instanceof Livro){
-                            System.out.println("O livro " + item.getTitulo() + " foi emprestado para o usuário " + usuario.getNome() + "! \n");
+                            System.out.println("O livro '" + item.getTitulo() + "' foi emprestado para o usuário '" + usuario.getNome() + "'! \n");
                             usuario.pegarItem(item);
                             item.setDisponivel(false);
                         }
                         if(item instanceof Revista){
-                            System.out.println("A revista " + item.getTitulo() + " foi emprestada para o usuário " + usuario.getNome() + "! \n");
+                            System.out.println("A revista '" + item.getTitulo() + "' foi emprestada para o usuário '" + usuario.getNome() + "'! \n");
                             usuario.pegarItem(item);
                             item.setDisponivel(false);
                         }
@@ -102,13 +102,15 @@ public class Biblioteca {
             if (item.id == idItem && !item.isDisponivel()) {
                 for (Usuario usuario : usuarios){
                     if (usuario.getId() == idUsuario){
-                        usuario.devolverItem(item);
-                        item.setDisponivel(true);
                         if (item instanceof Livro){
-                            System.out.println("O livro " + item.getTitulo() + " foi devolvido com sucesso! \n");
+                            usuario.devolverItem(item);
+                            item.setDisponivel(true);
+                            System.out.println("O livro '" + item.getTitulo() + "' foi devolvido com sucesso! \n");
                         }
                         if (item instanceof Revista){
-                            System.out.println("A revista " + item.getTitulo() + " foi devolvida com sucesso! \n");
+                            usuario.devolverItem(item);
+                            item.setDisponivel(true);
+                            System.out.println("A revista '" + item.getTitulo() + "' foi devolvida com sucesso! \n");
                         }
                     }
                 }
@@ -160,11 +162,11 @@ public class Biblioteca {
     public int getIdItem(String nome){
         int idItem = 0;
         for(ItemBiblioteca item : itemBiblioteca) {
-            if (item instanceof Livro && item.getTitulo().equalsIgnoreCase(nome) && item.isDisponivel()) {
+            if (item instanceof Livro && item.getTitulo().equalsIgnoreCase(nome)) {
                 idItem = item.id;
                 break;
             }
-            if (item instanceof Revista && item.getTitulo().equalsIgnoreCase(nome) && item.isDisponivel()) {
+            if (item instanceof Revista && item.getTitulo().equalsIgnoreCase(nome)) {
                 idItem = item.id;
                 break;
             }

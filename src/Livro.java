@@ -31,7 +31,6 @@ public Livro(int id, String titulo, Autor autor, String isbn) {
     public String toString() {
         return "Livro - ID: " + id +
                 " Titulo: " + titulo +
-                " | Autor: " + autor +
                 " | isbn: " + isbn;
     }
 }

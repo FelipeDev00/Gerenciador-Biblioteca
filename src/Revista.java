@@ -22,7 +22,7 @@ public class Revista extends ItemBiblioteca {
 
     @Override
     public String toString() {
-        return "Revista " + id + " - " +
+        return "Revista ID: " + id + " - " +
                 "titulo: " + titulo +
                 " | Edição: " + edicao;
     }

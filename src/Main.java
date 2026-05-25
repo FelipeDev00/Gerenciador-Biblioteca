@@ -184,13 +184,11 @@ void main() {
                             int usuarioId = biblioteca.getIdUsuario(nomeUsuario);
                             System.out.println("\nLista de itens emprestados para " + nomeUsuario + ":\n");
                             biblioteca.listarItensEmprestados(nomeUsuario);
+                            System.out.println("");
                             System.out.println("Digite o nome do item que deseja devolver: ");
                             String nomeItem = sc.nextLine();
                             int  idItem = biblioteca.getIdItem(nomeItem);
                             biblioteca.devolucaoItem(idItem, usuarioId);
-
-
-
                             break;
 
                         case 3:
@@ -205,6 +203,7 @@ void main() {
                             System.out.println("Digite o nome do autor do livro: ");
                             String autorLivro = sc.nextLine();
                             biblioteca.procurarPorAutor(autorLivro);
+                            System.out.println("");
                             break;
 
                         case 6:

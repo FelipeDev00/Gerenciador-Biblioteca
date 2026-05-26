@@ -29,12 +29,16 @@ void main() {
                             String nomeUsuario = sc.nextLine();
                             System.out.println("Digite o CPF do usuário: ");
                             String cpfUsuario = sc.nextLine();
-
-                            Usuario novoUsuario = new Usuario(nomeUsuario, cpfUsuario, idUsuario);
-                            novoUsuario.setId(idUsuario);
-                            biblioteca.adicionarUsuario(novoUsuario);
-                            idUsuario++;
+                            if (nomeUsuario.isBlank() || cpfUsuario.isBlank()){
+                                System.out.println("ERRO: Os campos 'NOME' e 'CPF' não podem estar vazios. ");
+                            } else {
+                                Usuario novoUsuario = new Usuario(nomeUsuario, cpfUsuario, idUsuario);
+                                novoUsuario.setId(idUsuario);
+                                biblioteca.adicionarUsuario(novoUsuario);
+                                idUsuario++;
+                            }
                             break;
+
                         case 2:
                             System.out.println("Digite o nome do autor: ");
                             String nomeAutor = sc.nextLine(); //Armazena o nome do autor
@@ -122,7 +126,7 @@ void main() {
                             break;
 
                         default:
-                            System.out.println("Opção inválida. \n");
+                            System.out.println("Opção inválida. Digite somente o número correspondente a opção desejada.");
                     }
 
                 } while (opcao != 8);

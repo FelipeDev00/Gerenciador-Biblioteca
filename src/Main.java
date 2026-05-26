@@ -14,7 +14,7 @@ void main() {
     //Loop DO-WHILE para fazer as perguntas (DO) depois verificar a resposta (WHILE)
     do {
         try {
-            System.out.println("Bem vindo ao sistema da biblioteca! Selecione a opção desejada \n");
+            System.out.println("Bem vindo ao sistema da biblioteca! Selecione a opção desejada: \n");
             System.out.println(" 1 - Realizar login como funcionário \n 2 - Realizar login como usuário \n 3 - Sair do sistema");
             tipoUsuario = sc.nextInt();
             if (tipoUsuario == 1) {
@@ -117,7 +117,6 @@ void main() {
                             biblioteca.procurarPorAutor(autorLivro); //Chama o método que procura um livro específico na lista relacionado ao nome do autor digitado pelo usuário e mostra seus detalhes.
                             break;
 
-
                         case 8:
                             System.out.println("Realizando Logon... \n");
                             break;
@@ -127,7 +126,6 @@ void main() {
                     }
 
                 } while (opcao != 8);
-
 
             } else if (tipoUsuario == 2) {
                 System.out.println(" \nLogin realizado como usuário. \nSelecione a opcao desejada: \n");
@@ -155,10 +153,6 @@ void main() {
                                 } else {
                                     System.out.println("Não há livros disponíveis no momento. \n");
                                 }
-
-
-
-
 
                             } else if (item.equals("2")) {
                                 System.out.println("Ok! Essa é a lista de revistas disponíveis no sistema: \n");
@@ -211,8 +205,11 @@ void main() {
                     }
                 } while (opcao != 6);
 
-            } else {
+            }
+            else if (tipoUsuario == 3){
                 System.out.println("Obrigado por utilizar nosso sistema! \n");
+            } else {
+                System.out.println("Opção inválida. Digite somente o número correspondente a opção desejada. \n");
             }
 
         } catch (InputMismatchException e) {
@@ -220,10 +217,5 @@ void main() {
             sc.nextLine();
             opcao = 0;
         }
-
     } while (tipoUsuario != 3);
-
-
 }
-
-

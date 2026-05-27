@@ -143,50 +143,64 @@ void main() {
                             String item = sc.nextLine();
 
                             if (item.equals("1")) {
-                                System.out.println("Ok! Essa é a lista de livros disponíveis no sistema: \n");
-                                if (biblioteca.listarLivrosDisponiveis()){
-                                    System.out.println("\nDigite o título do livro que você quer pegar emprestado: ");
-                                    String livro = sc.nextLine();
-                                    int idLivro = biblioteca.getIdItem(livro);
-                                    System.out.println("");
-                                    System.out.println("Digite o nome do seu usuário cadastrado no sistema: ");
-                                    String nomeUsuario = sc.nextLine();
-                                    System.out.println("");
-                                    int usuarioId = biblioteca.getIdUsuario(nomeUsuario);
-                                    biblioteca.emprestarItem(idLivro, usuarioId);
+                                try {
+                                    System.out.println("Ok! Essa é a lista de livros disponíveis no sistema: \n");
+                                    if (biblioteca.listarLivrosDisponiveis()){
+                                        System.out.println("\nDigite o título do livro que você quer pegar emprestado: ");
+                                        String livro = sc.nextLine();
+                                        int idLivro = biblioteca.getIdItem(livro);
+                                        System.out.println("");
+                                        System.out.println("Digite o nome do seu usuário cadastrado no sistema: ");
+                                        String nomeUsuario = sc.nextLine();
+                                        System.out.println("");
+                                        int usuarioId = biblioteca.getIdUsuario(nomeUsuario);
+                                        biblioteca.emprestarItem(idLivro, usuarioId);
                                 } else {
-                                    System.out.println("Não há livros disponíveis no momento. \n");
+                                        System.out.println("Não há livros disponíveis no momento. \n");
+                                    }
+
+                                } catch (Exception idNaoEncontradaException) {
+                                    System.out.println("ERRO: " + idNaoEncontradaException.getMessage() + "\n");
                                 }
 
                             } else if (item.equals("2")) {
-                                System.out.println("Ok! Essa é a lista de revistas disponíveis no sistema: \n");
-                                if (biblioteca.listarRevistasDisponiveis()){
-                                    System.out.println("\nDigite o titulo da revista que você quer pegar emprestado: ");
-                                    String revista = sc.nextLine();
-                                    int idRevista = biblioteca.getIdItem(revista);
-                                    System.out.println("");
-                                    System.out.println("Digite o nome do seu usuário cadastrado no sistema: ");
-                                    String nomeUsuario = sc.nextLine();
-                                    System.out.println("");
-                                    int usuarioId = biblioteca.getIdUsuario(nomeUsuario);
-                                    biblioteca.emprestarItem(idRevista, usuarioId);
-                                } else {
-                                    System.out.println("Não há revistas disponíveis no momento. \n");
+                                try {
+                                    System.out.println("Ok! Essa é a lista de revistas disponíveis no sistema: \n");
+                                    if (biblioteca.listarRevistasDisponiveis()){
+                                        System.out.println("\nDigite o titulo da revista que você quer pegar emprestado: ");
+                                        String revista = sc.nextLine();
+                                        int idRevista = biblioteca.getIdItem(revista);
+                                        System.out.println("");
+                                        System.out.println("Digite o nome do seu usuário cadastrado no sistema: ");
+                                        String nomeUsuario = sc.nextLine();
+                                        System.out.println("");
+                                        int usuarioId = biblioteca.getIdUsuario(nomeUsuario);
+                                        biblioteca.emprestarItem(idRevista, usuarioId);
+                                    } else {
+                                        System.out.println("Não há revistas disponíveis no momento. \n");
+                                    }
+                                } catch (Exception idNaoEncontradaException) {
+                                    System.out.println("ERRO: " + idNaoEncontradaException.getMessage() + "\n");
                                 }
                             }
                             break;
 
                         case 2:
-                            System.out.println("Digite seu nome completo cadastrado no sistema: ");
-                            String nomeUsuario = sc.nextLine();
-                            int usuarioId = biblioteca.getIdUsuario(nomeUsuario);
-                            System.out.println("\nLista de itens emprestados para " + nomeUsuario + ":\n");
-                            biblioteca.listarItensEmprestados(nomeUsuario);
-                            System.out.println("");
-                            System.out.println("Digite o nome do item que deseja devolver: ");
-                            String nomeItem = sc.nextLine();
-                            int  idItem = biblioteca.getIdItem(nomeItem);
-                            biblioteca.devolucaoItem(idItem, usuarioId);
+                            try {
+                                System.out.println("Digite seu nome completo cadastrado no sistema: ");
+                                String nomeUsuario = sc.nextLine();
+                                int usuarioId = biblioteca.getIdUsuario(nomeUsuario);
+                                System.out.println("\nLista de itens emprestados para " + nomeUsuario + ":\n");
+                                biblioteca.listarItensEmprestados(nomeUsuario);
+                                System.out.println("");
+                                System.out.println("Digite o nome do item que deseja devolver: ");
+                                String nomeItem = sc.nextLine();
+                                int  idItem = biblioteca.getIdItem(nomeItem);
+                                biblioteca.devolucaoItem(idItem, usuarioId);
+
+                            } catch (Exception idNaoEncontradaException) {
+                                System.out.println("ERRO: " + idNaoEncontradaException.getMessage() + "\n");
+                            }
                             break;
 
                         case 3:

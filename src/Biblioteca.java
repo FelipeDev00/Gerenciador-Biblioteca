@@ -76,45 +76,73 @@ public class Biblioteca {
         return encontrouAlgum;
     }
 
-    public void emprestarItem(int idItem, int idUsuario){
-        for (ItemBiblioteca item : itemBiblioteca){
+    public void emprestarItem(int idItem, int idUsuario) throws Exception {
+        ItemBiblioteca itemEncontrado = null;
+        Usuario usuarioEncontrado = null;
+
+        for (ItemBiblioteca item : itemBiblioteca) {
             if (item.id == idItem && item.isDisponivel()) {
-                for (Usuario usuario : usuarios){
-                    if (usuario.getId() == idUsuario){
-                        if (item instanceof Livro){
-                            System.out.println("O livro '" + item.getTitulo() + "' foi emprestado para o usuário '" + usuario.getNome() + "'! \n");
-                            usuario.pegarItem(item);
-                            item.setDisponivel(false);
-                        }
-                        if(item instanceof Revista){
-                            System.out.println("A revista '" + item.getTitulo() + "' foi emprestada para o usuário '" + usuario.getNome() + "'! \n");
-                            usuario.pegarItem(item);
-                            item.setDisponivel(false);
-                        }
-                    }
-                }
+                itemEncontrado = item;
+                break;
             }
+        }
+        for (Usuario usuario : usuarios) {
+            if (usuario.getId() == idUsuario) {
+                usuarioEncontrado = usuario;
+                break;
+            }
+        }
+        if (itemEncontrado == null) {
+            throw new Exception("O item não foi encontrado/cadastrado no sistema.");
+        }
+        if (usuarioEncontrado == null) {
+            throw new Exception("O usuário não foi encontrado no sistema.");
+        }
+
+        if (itemEncontrado instanceof Livro){
+            System.out.println("O livro '" + itemEncontrado.getTitulo() + "' foi emprestado para o usuário '" + usuarioEncontrado.getNome() + "'! \n");
+            usuarioEncontrado.pegarItem(itemEncontrado);
+            itemEncontrado.setDisponivel(false);
+        }
+        if(itemEncontrado instanceof Revista){
+            System.out.println("A revista '" + itemEncontrado.getTitulo() + "' foi emprestada para o usuário '" + usuarioEncontrado.getNome() + "'! \n");
+            usuarioEncontrado.pegarItem(itemEncontrado);
+            itemEncontrado.setDisponivel(false);
         }
     }
 
-    public void devolucaoItem(int idItem, int idUsuario){
-        for (ItemBiblioteca item : itemBiblioteca){
+    public void devolucaoItem(int idItem, int idUsuario) throws Exception {
+        ItemBiblioteca itemEncontrado = null;
+        Usuario usuarioEncontrado = null;
+
+        for (ItemBiblioteca item : itemBiblioteca) {
             if (item.id == idItem && !item.isDisponivel()) {
-                for (Usuario usuario : usuarios){
-                    if (usuario.getId() == idUsuario){
-                        if (item instanceof Livro){
-                            usuario.devolverItem(item);
-                            item.setDisponivel(true);
-                            System.out.println("O livro '" + item.getTitulo() + "' foi devolvido com sucesso! \n");
-                        }
-                        if (item instanceof Revista){
-                            usuario.devolverItem(item);
-                            item.setDisponivel(true);
-                            System.out.println("A revista '" + item.getTitulo() + "' foi devolvida com sucesso! \n");
-                        }
-                    }
-                }
+                itemEncontrado = item;
+                break;
             }
+        }
+        for (Usuario usuario : usuarios) {
+            if (usuario.getId() == idUsuario) {
+                usuarioEncontrado = usuario;
+                break;
+            }
+        }
+        if (usuarioEncontrado == null) {
+            throw new Exception("O usuário não foi encontrado/cadastrado no sistema.");
+        }
+        if (itemEncontrado == null) {
+            throw new Exception("O item não foi encontrado na sua lista de itens emprestados. Verifique o nome do item e tente novamente.");
+        }
+
+        if (itemEncontrado instanceof Livro){
+            usuarioEncontrado.devolverItem(itemEncontrado);
+            itemEncontrado.setDisponivel(true);
+            System.out.println("O livro '" + itemEncontrado.getTitulo() + "' foi devolvido com sucesso! \n");
+        }
+        if (itemEncontrado instanceof Revista){
+            usuarioEncontrado.devolverItem(itemEncontrado);
+            itemEncontrado.setDisponivel(true);
+            System.out.println("A revista '" + itemEncontrado.getTitulo() + "' foi devolvida com sucesso! \n");
         }
     }
 

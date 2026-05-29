@@ -25,7 +25,7 @@ public class Biblioteca {
     //Recebe como parâmetro um objeto completo do tipo 'Usuário' e executa o método
     public void adicionarUsuario(Usuario usuario){
         usuarios.add(usuario);
-        System.out.println("Usuario '" + usuario.getNome() + "' adicionado com sucesso! \n");
+        System.out.println("Usuario '" + usuario.getNome() + "' adicionado com sucesso!");
     }
 
     //Método para listar todos os usuários da biblioteca.
@@ -48,7 +48,6 @@ public class Biblioteca {
             for(ItemBiblioteca item : itemBiblioteca){
                 item.exibirDetalhes();
             }
-            System.out.println("");
         }
     }
 
@@ -91,7 +90,7 @@ public class Biblioteca {
         return encontrouAlgum;
     }
 
-    public void emprestarItem(int idItem, int idUsuario) throws Exception {
+    public void emprestarItem(int idItem, int idUsuario){
         ItemBiblioteca itemEncontrado = null;
         Usuario usuarioEncontrado = null;
 
@@ -106,12 +105,6 @@ public class Biblioteca {
                 usuarioEncontrado = usuario;
                 break;
             }
-        }
-        if (itemEncontrado == null) {
-            throw new Exception("O item não foi encontrado/cadastrado no sistema.");
-        }
-        if (usuarioEncontrado == null) {
-            throw new Exception("O usuário não foi encontrado no sistema.");
         }
 
         if (itemEncontrado instanceof Livro){
@@ -185,12 +178,12 @@ public class Biblioteca {
             }
         }
         if (idUsuario == 0) {
-            throw new Exception("ERRO: O usuário não foi encontrado ou não foi cadastrado no sistema.");
+            throw new Exception("O usuário não foi encontrado ou não foi cadastrado no sistema.");
         }
         return idUsuario;
     }
 
-    public int getIdItem(String nome){
+    public int getIdItem(String nome) throws Exception{
         int idItem = 0;
         for(ItemBiblioteca item : itemBiblioteca) {
             if (item instanceof Livro && item.getTitulo().equalsIgnoreCase(nome)) {
@@ -201,7 +194,9 @@ public class Biblioteca {
                 idItem = item.id;
                 break;
             }
-
+        }
+        if (idItem == 0) {
+            throw new Exception("O item não foi encontrado ou não foi cadastrado no sistema.");
         }
         return idItem;
     }
@@ -220,7 +215,7 @@ public class Biblioteca {
             }
         }
         if(!encontrado){
-            System.out.println("Nenhum livro encontrado para este autor. \n");
+            System.out.println("Nenhum livro encontrado para este autor.");
         }
     }
 }

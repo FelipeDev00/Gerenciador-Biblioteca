@@ -101,6 +101,9 @@ void main() {
                                     id++;
                                 }
                             }
+                            else{
+                                System.out.println("Opção inválida. Escolha somente a opção [1] Livro ou [2] Revista.");
+                            }
                             break;
 
                         case 4:
@@ -205,10 +208,12 @@ void main() {
 
                         case 3:
                             biblioteca.listarItens();
+                            System.out.println("");
                             break;
 
                         case 4:
                             biblioteca.listarAutores();
+                            System.out.println("");
                             break;
 
                         case 5:
@@ -220,6 +225,10 @@ void main() {
 
                         case 6:
                             System.out.println("Realizando Logon... \n");
+                            break;
+
+                        default:
+                            System.out.println("Opção inválida. Digite somente o número correspondente a opção desejada. \n");
                     }
                 } while (opcao != 6);
 

@@ -134,7 +134,8 @@ void main() {
 
                 } while (opcao != 8);
 
-            } else if (tipoUsuario == 2) {
+            }
+            else if (tipoUsuario == 2) {
                 System.out.println(" \nLogin realizado como usuário. \nSelecione a opcao desejada: \n");
                 do {
                     System.out.println(" 1 - Pegar um item emprestado \n 2 - Devolver um item\n 3 - Listar todos os itens \n 4 - Listar autores cadastrados \n 5 - Procurar livro por autor \n 6 - Voltar a página inicial");
@@ -231,7 +232,6 @@ void main() {
                             System.out.println("Opção inválida. Digite somente o número correspondente a opção desejada. \n");
                     }
                 } while (opcao != 6);
-
             }
             else if (tipoUsuario == 3){
                 System.out.println("Obrigado por utilizar nosso sistema! \n");
@@ -242,7 +242,7 @@ void main() {
         } catch (InputMismatchException e) {
             System.out.println("ERRO: Selecione apenas o número da opção desejada. \n");
             sc.nextLine();
-            opcao = 0;
+            opcao = 1;
         }
     } while (tipoUsuario != 3);
 }
